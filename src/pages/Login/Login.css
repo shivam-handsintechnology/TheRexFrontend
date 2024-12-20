@@ -1,0 +1,190 @@
+.background-login .container-fluid {
+    padding-left: 0px;
+    padding-right: 50px;
+    background: #FBF8F0;
+}
+
+.background-login .row {
+    align-items: center;
+    justify-content: end;
+}
+
+.login-page {
+    background: #FFFFFFF2;
+    box-shadow: 0px 0px 4px 2px #8187AC40;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+button.verify-otp-button.btn.btn-primary {
+    background: #ecc217;
+    border: none;
+    padding: 13px 30px;
+    margin-bottom: 20px;
+}
+
+.form-control.PhoneInput {
+    display: flex;
+    height: 55px;
+}
+
+.resend-otp p {
+    margin-bottom: 0px;
+}
+
+button.btn.btn-link {
+    margin-top: 10px;
+    background: #430303;
+    color: white;
+    text-decoration: none;
+}
+
+.check-box.col-lg-6 label {
+    margin-bottom: 0px;
+    font-weight: 400;
+}
+
+input:-internal-autofill-selected {
+    background-color: red !important;
+}
+
+.forgetpassword.col-lg-6 {
+    text-align: right;
+}
+
+.forgetpassword.col-lg-6 a {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0px;
+    color: #430303;
+    text-decoration: none;
+}
+
+img.register-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 180px;
+}
+
+button.submit-button img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.login-page label {
+    font-family: "Sen", sans-serif;
+    color: #430303;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.login-page .input-group {
+    height: 55px;
+    border: 1px solid #430303;
+    border-radius: 5px;
+}
+
+.login-page .form-control:focus {
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.login-page .input-group-text {
+    padding: 10px 5px 10px 20px;
+    background-color: #FBF8F0;
+    border: none;
+}
+
+.login-page img.input-icon {
+    height: 20px;
+}
+
+.login-page .form-control {
+    background-color: #fbf8f0 !important;
+    border: none !important;
+}
+
+span.input-group-text svg {
+    margin-right: 10px;
+}
+
+button.submit-button {
+    border: none;
+    text-transform: capitalize;
+    background-color: #E6BD2B;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 100px;
+    display: block;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+    padding: 12px 60px 12px 60px;
+    margin-left: auto;
+}
+
+.img-text-with img {
+    width: 100%;
+}
+
+p.dontacc a {
+    color: #e6bd2b;
+    text-decoration: none;
+}
+
+p.dontacc {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 0px;
+    color: #430303;
+    margin-top: 20px;
+}
+
+.img-text-with {
+    position: relative;
+}
+
+.img-text-with h3 {
+    text-align: center;
+    background: #430303B2;
+    width: 70%;
+    position: absolute;
+    left: 13%;
+    top: 36%;
+    padding: 40px 0px;
+    color: white;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+button.login_btnup.forget-password img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.forget-password {
+    border: none;
+    text-transform: capitalize;
+    background-color: #E6BD2B;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 100px;
+    display: block;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+    padding: 12px 60px 12px 60px;
+    margin-left: auto;
+}

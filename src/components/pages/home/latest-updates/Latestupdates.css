@@ -1,0 +1,38 @@
+.latest-abcd-updates {
+    padding-top: 160px;
+    padding-bottom: 120px;
+    background-image: url('../../../../assets/background.png');
+    background-size: cover;
+}
+
+.latests .slick-slide {
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+
+.play-buttons1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.play-buttons1 h2 {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 300;
+    padding: 10px 20px;
+    position: absolute;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 0;
+    bottom: 10px;
+}
+
+.maine-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

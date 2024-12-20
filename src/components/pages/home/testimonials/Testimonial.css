@@ -1,0 +1,64 @@
+.testi-card.style2 {
+    background: #ffffff;
+    padding: 40px;
+    display: block;
+    position: relative;
+}
+
+.testimonail-section-slider {
+    padding-top: 160px;
+    padding-bottom: 220px;
+    background-image: url('../../../../assets/background.png');
+    background-size: cover;
+}
+
+
+.testimonail-section-slider .slick-slide {
+    padding: 0 15px;
+}
+
+.testi-card.style2 .testi-card_content {
+    margin: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    margin-top: 36px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.testi-card.style2 .testi-card-icon {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 12px;
+}
+
+.testi-card_bottom {
+    margin-left: 15px;
+}
+
+.testi-card.style2 .testi-card_name {
+    color: #430303;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    line-height: 1.5;
+}
+
+.testi-card.style2 .testi-card_desig {
+    color: #430303;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.testi-card.style2 .testi-card_review {
+    color: var(--theme-color);
+    font-size: 14px;
+    margin-top: 5px;
+}

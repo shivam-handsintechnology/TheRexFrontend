@@ -1,0 +1,78 @@
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slick-arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+.slick-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.custom-prev-arrow,
+.custom-next-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.custom-prev-arrow {
+    left: -50px;
+}
+
+.custom-next-arrow {
+    right: -50px;
+}
+
+.custom-prev-arrow:hover,
+.custom-next-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.custom-prev-arrow svg,
+.custom-next-arrow svg {
+    color: white;
+    width: 24px;
+    height: 24px;
+}
+
+.carousel-item {
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+    .custom-prev-arrow,
+    .custom-next-arrow {
+        display: none !important;
+    }
+}

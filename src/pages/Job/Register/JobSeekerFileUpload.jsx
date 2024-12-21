@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-const JobSeekerFileUpload = ({ register, setValue, errors }) => {
+import { Form } from 'react-bootstrap';
+const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
     const [resumePreview, setResumePreview] = useState(null);
     const [profilePhotoPreview, setProfilePhotoPreview] = useState(null);
     // Refs for input fields
@@ -23,6 +23,9 @@ const JobSeekerFileUpload = ({ register, setValue, errors }) => {
             setValue("profilephoto", file);
             setProfilePhotoPreview(URL.createObjectURL(file));
         }
+    };
+    const handlUpload = (refName) => {
+        refName.current.click();
     };
 
 
@@ -50,18 +53,23 @@ const JobSeekerFileUpload = ({ register, setValue, errors }) => {
             {/* Resume Upload */}
             <div className="col-lg-5">
                 <label>Resume</label>
-                <div className="mb-4 input-group">
-                    <span className="input-group-text">
-                        <img className="input-icon" src="/api/placeholder/24/24" alt="resume icon" />
-                    </span>
-                    <input
-                        ref={resumeInputRef}
-                        type="file"
-                        accept="application/pdf"
-                        className={`form-control ${errors.resume ? 'is-invalid' : ''}`}
-                        onChange={handleResumeChange}
-                    />
-                </div>
+
+                <Form.Group className="mb-4 file-type">
+                    <div className="file-input">
+                        <input
+                            ref={resumeInputRef}
+                            type="file"
+                            accept="application/pdf"
+                            className={`form-control ${errors.resume ? 'is-invalid' : ''}`}
+                            onChange={handleResumeChange}
+                        />
+                        <button className="button" onClick={() => handlUpload(resumeInputRef)}>Upload</button>
+                        <span className="label" data-js-label="">
+                            {watch("resume")?.name ? watch("resume")?.name : "No Files Selected"}
+
+                        </span>
+                    </div>
+                </Form.Group>
                 {errors.resume && (
                     <div className="text-danger">
                         {typeof errors.resume === 'string'
@@ -85,18 +93,37 @@ const JobSeekerFileUpload = ({ register, setValue, errors }) => {
             {/* Profile Photo Upload */}
             <div className="col-lg-5">
                 <label>Profile Photo</label>
-                <div className="mb-4 input-group">
-                    <span className="input-group-text">
-                        <img className="input-icon" src="/api/placeholder/24/24" alt="profile photo icon" />
-                    </span>
-                    <input
-                        ref={profilePhotoInputRef}
-                        type="file"
-                        accept="image/*"
-                        className={`form-control ${errors.profilephoto ? 'is-invalid' : ''}`}
-                        onChange={handleProfilePhotoChange}
-                    />
-                </div>
+                <Form.Group className="mb-4 file-type">
+                    <div className="file-input">
+                        <input
+                            ref={profilePhotoInputRef}
+                            type="file"
+                            accept="image/*"
+                            className={`form-control ${errors.profilephoto ? 'is-invalid' : ''}`}
+                            onChange={handleProfilePhotoChange}
+                        />
+                        <button className="button" onClick={() => handlUpload(profilePhotoInputRef)}>Upload</button>
+                        <span className="label" data-js-label="">
+                            {watch("profilephoto")?.name ? watch("profilephoto")?.name : "No Files Selected"}
+                            {profilePhotoPreview && (
+                                <div className="mt-3">
+                                    <label>Profile Photo Preview:</label>
+                                    <img
+                                        src={profilePhotoPreview}
+                                        alt="Profile Preview"
+                                        className="w-full"
+                                        style={{
+                                            height: '300px',
+                                            objectFit: 'contain',
+                                            border: '1px solid #ddd',
+                                            borderRadius: '4px'
+                                        }}
+                                    />
+                                </div>
+                            )}
+                        </span>
+                    </div>
+                </Form.Group>
                 {errors.profilephoto && (
                     <div className="text-danger">
                         {typeof errors.profilephoto === 'string'
@@ -104,22 +131,7 @@ const JobSeekerFileUpload = ({ register, setValue, errors }) => {
                             : errors.profilephoto.message || 'Invalid profile photo'}
                     </div>
                 )}
-                {profilePhotoPreview && (
-                    <div className="mt-3">
-                        <label>Profile Photo Preview:</label>
-                        <img
-                            src={profilePhotoPreview}
-                            alt="Profile Preview"
-                            className="w-full"
-                            style={{
-                                height: '300px',
-                                objectFit: 'contain',
-                                border: '1px solid #ddd',
-                                borderRadius: '4px'
-                            }}
-                        />
-                    </div>
-                )}
+
             </div>
         </div>
     );

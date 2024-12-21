@@ -188,7 +188,7 @@ const JobSeeker = () => {
                             </div>
                         )}
                     </div>
-                    <JobSeekerFileUpload register={register} control={control} setValue={setValue} errors={errors} />
+                    <JobSeekerFileUpload watch={watch} register={register} setValue={setValue} errors={errors} />
 
                     <div className="col-lg-5">
                         <label>Email</label>

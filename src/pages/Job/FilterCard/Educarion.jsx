@@ -3,7 +3,7 @@ import { Accordion, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Education = ({ data, expanded, toggleExpand, handleChange }) => {
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
     return (
         <>
             {

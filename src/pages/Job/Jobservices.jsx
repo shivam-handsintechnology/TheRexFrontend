@@ -7,10 +7,12 @@ import FilterCard from './FilterCard/Index';
 import { useGetAllTopCompaniesQuery } from '@/redux/apiSlice';
 import { useSelector } from 'react-redux';
 import CompanyCard from './Cards/CompanyCard';
+import SearchBox from './FilterCard/SearchBox';
+import { Loading } from '@/hooks/SkeltonsData';
 
 const Jobservices = () => {
-    const jobFilters = useSelector((state) => state.job);
-    const { data, refetch } = useGetAllTopCompaniesQuery(jobFilters)
+    const jobFilters = useSelector((state) => state.filters);
+    const { data, refetch, isFetching } = useGetAllTopCompaniesQuery(jobFilters)
     console.log("datajobFilters", data)
     useEffect(() => {
         try {
@@ -27,22 +29,7 @@ const Jobservices = () => {
                     className="w-100"
                     alt=""
                 />
-                <div className="overlay12 absolute top-1/2 left-0 right-0 -translate-y-1/2">
-                    <div className="overlaycontentnt w-full">
-                        <Row className="flex justify-center">
-                            <div className='col-lg-8'>
-                                <div className='sass123 flex'>
-                                    <Form.Control
-                                        className='mskmd flex-grow mr-2'
-                                        placeholder="Search here ....."
-                                        aria-label="Email Address"
-                                    />
-                                    <button className='searh-buttonas'>Search</button>
-                                </div>
-                            </div>
-                        </Row>
-                    </div>
-                </div>
+                <SearchBox />
             </div>
             <Container>
                 <Row>
@@ -51,7 +38,7 @@ const Jobservices = () => {
                     </Col>
                     <Col lg={9}>
                         <Row>
-                            {Array.isArray(data?.data) && data?.data.map((item, index) => (
+                            {isFetching ? <Loading /> : Array.isArray(data?.data) && data?.data.map((item, index) => (
                                 <Col key={index} lg={4} className='mb-5'>
                                     <CompanyCard item={item} />
                                 </Col>

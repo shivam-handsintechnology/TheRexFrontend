@@ -582,6 +582,112 @@ const candidateValidationSchema = Joi.object({
     'any.required': 'profilephoto  is required.',
   }),
 });
+const EmployerSchema = Joi.object({
+  name: Joi.string().required()
+    .messages({
+      'string.base': 'Company Name must be a string.',
+      'string.empty': 'Company Name is required.',
+      'any.required': 'Company Name is required.',
+    })
+  ,
+  logo: Joi.object().required().messages({
+    'array.base': 'Logo must be an object.',
+    'any.required': 'Logo is required.',
+  }),
+
+  email: Joi.string().email({ tlds: { allow: false } }).required().messages({
+    'string.base': 'Email must be a string.',
+    'string.email': 'Please enter a valid email address.',
+    'any.required': 'Email is required.',
+  }),
+
+  phone: Joi.string().pattern(/^\d{10,15}$/).required().messages({
+    'string.base': 'Phone number must be a string.',
+    'string.pattern.base': 'Phone number must be between 10 to 15 digits.',
+    'any.required': 'Phone number is required.',
+  }),
+
+  website: Joi.string().uri().optional().messages({
+    'string.base': 'Website must be a valid string.',
+    'string.uri': 'Please enter a valid URL.',
+  }),
+
+  founder: Joi.string().required().messages({
+    'string.base': 'Founder Name must be a string.',
+    'any.required': 'Founder Name is required.',
+  }),
+
+  establishedDate: Joi.date().required().messages({
+    'date.base': 'Founded Date must be a valid date.',
+    'any.required': 'Founded Date is required.',
+  }),
+
+  org_size: Joi.number().integer().required().messages({
+    'number.base': 'Organization Size must be a number.',
+    'any.required': 'Organization Size is required.',
+  }),
+
+  industry: Joi.array().items(Joi.string().length(24).hex()).optional().messages({
+    'array.base': 'Industry must be an array of ObjectIds.',
+  }),
+
+  introvideourl: Joi.string().uri().required().messages({
+    'string.base': 'Introduction URL must be a string.',
+    'string.uri': 'Please enter a valid URL for the intro video.',
+    'any.required': 'Introduction URL is required.',
+  }),
+
+  aboutus: Joi.string().required().messages({
+    'string.base': 'About Us section must be a string.',
+    'any.required': 'About Us section is required.',
+  }),
+
+  photos: Joi.array()
+    .items(Joi.object())
+    .optional()
+    .messages({
+      'array.base': 'Photos must be an array of objects.',
+    }),
+  videos: Joi.array()
+    .optional()
+    .items(Joi.object())
+    .messages({
+      'array.base': 'Videos must be an array of objects.',
+    }),
+  socialnetworks: Joi.array().items(Joi.object()).optional().messages({
+    'array.base': 'socialnetworks must be an array of objects.',
+  }),
+
+  city_id: Joi.string().length(24).hex().required().messages({
+    'string.base': 'City ID must be a string.',
+    'string.hex': 'City ID must be a valid ObjectId.',
+    'any.required': 'City ID is required.',
+  }),
+
+  state_id: Joi.string().length(24).hex().required().messages({
+    'string.base': 'State ID must be a string.',
+    'string.hex': 'State ID must be a valid ObjectId.',
+    'any.required': 'State ID is required.',
+  }),
+
+  country_id: Joi.string().length(24).hex().required().messages({
+    'string.base': 'Country ID must be a string.',
+    'string.hex': 'Country ID must be a valid ObjectId.',
+    'any.required': 'Country ID is required.',
+  }),
+
+  pincode: Joi.string().optional().messages({
+    'string.base': 'Pincode must be a string.',
+  }),
+
+  address1: Joi.string().required().messages({
+    'string.base': 'Address is required.',
+    'any.required': 'Address is required.',
+  }),
 
 
-export { PostJobValidation, getAllKeys, ShowRefmessage, candidateValidationSchema, JobSeekervalidationSchema, JobSeekerEditvalidationSchema, jobPortalFormSchema, jobSchema, recruiterFormValidationSchema, personalDetailsValidationSchema, companyDetailsValidationSchema }
+
+
+});
+
+export { PostJobValidation, getAllKeys, ShowRefmessage, EmployerSchema, candidateValidationSchema, JobSeekervalidationSchema, JobSeekerEditvalidationSchema, jobPortalFormSchema, jobSchema, recruiterFormValidationSchema, personalDetailsValidationSchema, companyDetailsValidationSchema }

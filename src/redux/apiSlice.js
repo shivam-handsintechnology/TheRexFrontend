@@ -29,7 +29,7 @@ export const jobPortalApi = createApi({
         `/api/jobportal/user/profiles?page=${currentPage}&perPage=${perPage}`,
     }),
     getJobPortalProfile: builder.query({
-      query: () => '/api/jobportal/user/getprofile',
+      query: () => '/api/jobportal/user/profile',
       providesTags: ['UserProfile']
     }),
     getRole: builder.query({
@@ -49,11 +49,10 @@ export const jobPortalApi = createApi({
     // }),
 
     RegisterRecruiter: builder.mutation({
-      query: ({ formData, method = "POST" }) => ({
+      query: (formData) => ({
         url: '/api/jobportal/user/recruiter',
-        method: method,
+        method: "POST",
         body: formData,
-        credentials: 'include',
       }),
       invalidatesTags: ['UserProfile']
     }),
@@ -103,6 +102,7 @@ export const jobPortalApi = createApi({
     getJobById: builder.query({
       query: ({ id = "" }) =>
         `/api/jobportal/job/get/${id}`,
+      providesTags: ["getJobById"]
     }),
     getJobByCompanyId: builder.query({
       query: ({ id = "", page = 1, limit = 8 }) =>
@@ -211,6 +211,7 @@ export const jobPortalApi = createApi({
         body: {},
         credentials: 'include', // To include cookies with requests
       }),
+      invalidatesTags: ["getJobById"]
     }),
     // companies
     getAllCompanies: builder.query({

@@ -1,9 +1,9 @@
 import React from 'react'
-import { setFIlter } from '@/redux/jobSlice';
+import { setFIlter } from '@/redux/FilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'react-bootstrap';
 const SalarySlider = ({ data, expanded, toggleExpand }) => {
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
     const dispatch = useDispatch();
     return (
         <div className="checkbox-container">

@@ -49,7 +49,7 @@ const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
         };
     }, [resumePreview, profilePhotoPreview]);
     return (
-        <div className="row">
+        <>
             {/* Resume Upload */}
             <div className="col-lg-5">
                 <label>Resume</label>
@@ -71,13 +71,13 @@ const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
                     </div>
                 </Form.Group>
                 {errors.resume && (
-                    <div className="text-danger">
+                    <span className="text-danger">
                         {typeof errors.resume === 'string'
                             ? errors.resume
                             : errors.resume.message || 'Invalid resume file'}
-                    </div>
+                    </span>
                 )}
-                {resumePreview && (
+                {/* {resumePreview && (
                     <div className="mt-3">
                         <label>Resume Preview:</label>
                         <embed
@@ -87,7 +87,7 @@ const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
                             style={{ height: '300px' }}
                         />
                     </div>
-                )}
+                )} */}
             </div>
 
             {/* Profile Photo Upload */}
@@ -105,7 +105,7 @@ const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
                         <button className="button" onClick={() => handlUpload(profilePhotoInputRef)}>Upload</button>
                         <span className="label" data-js-label="">
                             {watch("profilephoto")?.name ? watch("profilephoto")?.name : "No Files Selected"}
-                            {profilePhotoPreview && (
+                            {/* {profilePhotoPreview && (
                                 <div className="mt-3">
                                     <label>Profile Photo Preview:</label>
                                     <img
@@ -120,20 +120,20 @@ const JobSeekerFileUpload = ({ watch, register, setValue, errors }) => {
                                         }}
                                     />
                                 </div>
-                            )}
+                            )} */}
                         </span>
                     </div>
                 </Form.Group>
                 {errors.profilephoto && (
-                    <div className="text-danger">
+                    <span className="text-danger">
                         {typeof errors.profilephoto === 'string'
                             ? errors.profilephoto
                             : errors.profilephoto.message || 'Invalid profile photo'}
-                    </div>
+                    </span>
                 )}
 
             </div>
-        </div>
+        </>
     );
 };
 

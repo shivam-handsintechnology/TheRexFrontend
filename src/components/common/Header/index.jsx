@@ -6,15 +6,19 @@ import logo from "@/assets/logo.svg"
 import { Dropdown, Row, Col } from 'react-bootstrap';
 import "./Header.css"
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearAllStates } from '@/redux/store';
 
 const Header = () => {
 
     const token = localStorage.getItem('token');
+    const dispatch = useDispatch()
     const userdata = JSON.parse(localStorage.getItem('user'));
 
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        dispatch(clearAllStates())
         window.location.href = '/';
     }
 

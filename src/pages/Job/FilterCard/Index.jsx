@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Accordion, Form, Spinner } from 'react-bootstrap';
 import { jobPortalApi, useGetOptionsQuery } from '@/redux/apiSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { setArrayFilter, setFIlter } from '@/redux/jobSlice';
 import ExperienceSlider from './ExperienceSlider';
 import SalarySlider from './SalarySlider';
 import WorkModeFilter from './WorkModeFilter';
 import Education from './Educarion';
 import Indutry from './Indutry';
 import LocationFilterBox from './LocationFilterBox';
+import { setArrayFilter } from '@/redux/FilterSlice';
 
 const FilterCard = () => {
     const dispatch = useDispatch()
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
 
     const { data, isFetching, } = useGetOptionsQuery()
     // Initial State
@@ -48,15 +48,19 @@ const FilterCard = () => {
     };
     // New methods to handle filter updates
     const handleChange = (name, value) => {
-        const currentWorkModes = jobFilters[name] || [];
-        const updatedWorkModes = currentWorkModes.includes(value)
-            ? currentWorkModes.filter(item => item !== value)
-            : [...currentWorkModes, value];
+        try {
+            const currentWorkModes = jobFilters[name] || [];
+            const updatedWorkModes = currentWorkModes.includes(value)
+                ? currentWorkModes.filter(item => item !== value)
+                : [...currentWorkModes, value];
 
-        dispatch(setArrayFilter({
-            type: [name],
-            values: updatedWorkModes
-        }));
+            dispatch(setArrayFilter({
+                type: [name],
+                values: updatedWorkModes
+            }));
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     // Fetch all location data
@@ -121,7 +125,7 @@ const FilterCard = () => {
                 <Accordion.Item eventKey="3">
                     <Accordion.Header>Education</Accordion.Header>
                     <Accordion.Body>
-                        {Array.isArray(data?.data?.educations) && <Education data={data?.data?.educations || []} expanded={expanded} toggleExpand={toggleExpand} />}
+                        {Array.isArray(data?.data?.educations) && <Education data={data?.data?.educations || []} expanded={expanded} toggleExpand={toggleExpand} handleChange={handleChange} />}
 
 
                     </Accordion.Body>

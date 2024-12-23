@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
-import JobSeeker from './JobSeeker';
-
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import Employer from './Employer/Index'
+import JobSeeker from './Candidate/Index'
 
 const Index = () => {
-
-    return (
-        <div>
-            <div className="background-register">
-                <div className="container">
-                    <Tabs defaultActiveKey={1} animation={true} id="noanim-tab-example">
-                        <Tab eventKey={1} title="Job Seeker">
-                            <JobSeeker />
-                        </Tab>
-                        <Tab eventKey={2} title="Recruiter">
-                            <JobSeeker />
-                        </Tab>
-                    </Tabs>
-                </div>
-            </div>
-
-        </div>
-
-    )
+    const { role = "student" } = useParams()
+    return role === "recruiter" ? <Employer /> : <JobSeeker />
 }
 
 export default Index

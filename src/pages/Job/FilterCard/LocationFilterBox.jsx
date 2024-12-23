@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 const LocationFilterBox = ({ data, expanded, toggleExpand, handleChange }) => {
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
     return (
         <>
             {data.slice(0, expanded.location ? data.length : 3).map((location, index) => (

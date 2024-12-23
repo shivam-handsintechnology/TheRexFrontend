@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFIlter } from '../redux/jobSlice';
+import { setFIlter } from '../redux/FilterSlice';
 import { useGetAllJobTitleQuery } from '../redux/apiSlice';
 
 // Custom debounce hook
@@ -22,7 +22,7 @@ const useDebounce = (value, delay) => {
 
 const SearchDropdown = () => {
     const dispatch = useDispatch();
-    const { searchedQuery } = useSelector((state) => state.job);
+    const { searchedQuery } = useSelector((state) => state.filters);
     const [isOpen, setIsOpen] = useState(false);
     const [localQuery, setLocalQuery] = useState(searchedQuery);
     const dropdownRef = useRef(null);

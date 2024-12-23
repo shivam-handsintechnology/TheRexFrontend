@@ -15,8 +15,8 @@ const InitialData = {
         "designation": "",
         "maritalstatus": "",
         "aboutus": "",
-        "profilephoto": {},
-        "resume": {},
+        "profilephoto": null,
+        "resume": null,
         "socialnetworks": [
             { type: "", url: "" }, // Initial empty field
         ],
@@ -26,39 +26,36 @@ const InitialData = {
         "pincode": "",
         "address1": "",
     },
-    "InitialJobUserData": /** 
+    // Employer fORM
+    "EmployerForm": {
+        "name": "tst",
+        "email": "shivam@handsintechnology.com",
+        "phone": "1234567890",
+        "website": "https://chatgpt.com/c/67667583-c688-800e-9421-0e4fa7e5ab04",
+        "logo": null,
+        "founder": "Test Founder",
+        "establishedDate": "12/02/1997",
+        "org_size": 14,
+        "industry": [],
+        "introvideourl": "https://chatgpt.com/c/67667583-c688-800e-9421-0e4fa7e5ab04",
+        "aboutus": "dasas",
+        "photos": [],
+        "videos": [],
+        "socialnetworks": [
+            { type: "", url: "" }, // Initial empty field
+        ],
+        "city_id": "",
+        "state_id": "",
+        "country_id": "",
+        "pincode": "1234567",
+        "address1": "sss",
+    },
+    "InitialJobPortalUserData": /** 
 * Paste one or more documents here
 */
     {
         "role": "",
         "token": "",
-        "name": "",
-        "dob": "",
-        "gender": "",
-        "age": "",
-        "email": "",
-        "phone": "",
-        "education": "",
-        "experience": "",
-        "industry": [],
-        "currentSalary": "",
-        "salaryExpectations": "",
-        "designation": "",
-        "profilephoto": null,
-        "resume": null,
-        "maritalstatus": "",
-        "aboutus": "",
-        "socialnetworks": [
-            {
-                "type": "",
-                "url": ""
-            }
-        ],
-        "city_id": "",
-        "state_id": "",
-        "country_id": "",
-        "pincode": "",
-        "address1": "",
     },
     "JobAplicationFomINtialData": {
         "firstName": "",
@@ -98,11 +95,38 @@ const InitialData = {
         "jobid": "",
         "category": [],
         "min_years": 0,
-        "max_years": 50,
+        "max_years": 10,
         "minSalary": "",
         "maxSalary": "",
         "jobtypes": [],
         "education": [],
+    },
+    initialPostJobdata: {
+        title: "",
+        description: "",
+        short_description: "",
+        requirements: "",
+        skills: [],
+        benefits: [],
+        "salary_range": {
+            "min": "",
+            "max": ""
+        },
+        "experience": {
+            "min_years": "",
+            "max_years": ""
+        },
+        state_id: "",
+        city_id: "",
+        country_id: "",
+        jobType: "",
+        position: "",
+        education: "",
+        category: "",
+        tags: [],
+        interview_process: "",
+        additional_instructions: "",
+        application_deadline: null,
     },
     "initialRecruiterform": {
         "personalDetails": {

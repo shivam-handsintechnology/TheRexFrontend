@@ -3,7 +3,7 @@ import { Accordion, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 const WorkModeFilter = ({ data, expanded, toggleExpand, handleChange }) => {
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
     return (
         <>
             {data.slice(0, expanded.workMode ? data.length : 3).map((jobType, index) => (

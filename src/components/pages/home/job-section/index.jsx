@@ -3,7 +3,14 @@ import subtitleimg from "@/assets/homepage/subtitle-img2-1.svg"
 import avatar from "@/assets/job/avatar.png"
 import background from "@/assets/job/background.png"
 import "./JobSection.css"
+import { useNavigate } from "react-router-dom"
+import { useGetAllTopCompaniesQuery } from "@/redux/apiSlice"
+import { Loading } from "@/hooks/SkeltonsData"
+import CompanyCard from "@/pages/Job/Cards/CompanyCard"
 const JobSection = () => {
+    const { data, isFetching, isError } = useGetAllTopCompaniesQuery({ page: 1, limit: 12, islatest: "1" })
+    const navigate = useNavigate()
+    if (isFetching) return <Loading />
     return (
         <div className="job-section">
             <div className="title-area mb-2 mt-5" style={{ textAlign: 'center' }}>
@@ -14,48 +21,15 @@ const JobSection = () => {
             </div>
             <Container fluid>
                 <Row>
-                    <Col lg={3}>
-                        <div className="box-card">
-                            <h6>Urgent Required</h6>
-                            <img src={avatar} />
-                            <h3>Company 1</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
-                            <h5>47 Vacancies</h5>
-                            <button>Apply Now</button>
-                        </div>
-                    </Col>
-                    <Col lg={3}>
-                        <div className="box-card">
-                            <img src={avatar} />
-                            <h3>Company 2</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
-                            <h5>47 Vacancies</h5>
-                            <button>Apply Now</button>
-                        </div>
-                    </Col>
-                    <Col lg={3}>
-                        <div className="box-card">
-                            <img src={avatar} />
-                            <h3>Company 3</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
-                            <h5>47 Vacancies</h5>
-                            <button>Apply Now</button>
-                        </div>
-                    </Col>
-                    <Col lg={3}>
-                        <div className="box-card">
-                            <h6>Urgent Required</h6>
-                            <img src={avatar} />
-                            <h3>Company 4</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing</p>
-                            <h5>47 Vacancies</h5>
-                            <button>Apply Now</button>
-                        </div>
-                    </Col>
+                    {data && data?.data?.map((item) => (
+                        <Col lg={3} key={item._id} className='mb-5'>
+                            <CompanyCard item={item} />
+                        </Col>
+                    ))}
                 </Row>
                 <button className="view-all-companies">View All Companies</button>
             </Container>
-            <img  className="bacl-job-sec" src={background} alt="" />
+            <img className="bacl-job-sec" src={background} alt="" />
         </div>
     )
 }

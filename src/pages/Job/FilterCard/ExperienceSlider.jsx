@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Slider from '@mui/material/Slider';
-import { setFIlter } from '@/redux/jobSlice';
+import { setFIlter } from '@/redux/FilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ExperienceSlider = ({ data }) => {
     const dispatch = useDispatch();
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
 
     const handleRangeChange = (event, value) => {
         dispatch(

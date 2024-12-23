@@ -5,12 +5,14 @@ import comlogo from "@/assets/comlogo.png"
 import CarouselWithPagination from './CustomPagingSlider'
 import { useGetCompanyByIdQuery, useGetJobByIdQuery, useApplyJobMutation, useGetJobByCompanyIdQuery } from '@/redux/apiSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { EmployerLogo } from '@/services/config'
 import swal from 'sweetalert'
 const Jobdetails = () => {
     const { token, role } = useSelector(store => store.auth);
-    const { jobid } = useSelector((state) => state.job)
+    const navigate = useNavigate()
+    console.log({ token })
+    const { jobid } = useSelector((state) => state.filters)
     const { id } = useParams()
     const { data } = useGetJobByIdQuery({ id: jobid }, { skip: !jobid })
     const { data: companydata, } = useGetCompanyByIdQuery({ companyId: id }, { skip: !id })
@@ -18,20 +20,31 @@ const Jobdetails = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const { data: JobsByCompanyData, isFetching } = useGetJobByCompanyIdQuery({ id: id, page: currentPage, limt: 8 }, { skip: !id })
     const handleJobClick = async (id) => {
-        if (!token) {
-            swal("Error", "Please Login First", "error").then(() => {
-                return navigate("/login");
-            })
-        } else if (!role) {
-            swal("Error", "Please Add Job Seeker details", "error").then(() => {
-                return navigate("/profile", { state: { isApplyjob: true } });
-            })
-        }
-        else if (!data?.job?.isApplied) {
-            const res = await applyJob({ jobId: id }).unwrap();
-            if (res.success) {
-                swal("Success", res.message, "success");
+        try {
+            if (!token) {
+                swal("Error", "Please Login First", "error").then(() => {
+                    return navigate("/login");
+                })
             }
+            else if (!role) {
+                swal("Error", "Please Add Job Seeker details", "error").then(() => {
+                    return navigate("/profile", { state: { isApplyjob: true } });
+                })
+            }
+            else if (role == "recruiter") {
+                swal("Error", "You Dont have Permission To AppLy Job", "error").then(() => {
+                    return ""
+                })
+            }
+            else if (!data?.job?.isApplied) {
+                const res = await applyJob({ jobId: id }).unwrap();
+                if (res.success) {
+                    swal("Success", res.message, "success");
+                }
+            }
+        } catch (error) {
+            swal("Warning", error?.data?.message || error.message, "warning");
+            console.log("error", error)
         }
     }
     return (
@@ -64,7 +77,7 @@ const Jobdetails = () => {
                         <div className='jonb-descee'>
                             <h3>Job Details</h3>
                             <div className='details-jobss'>
-                                <h4>Package : {`${data?.job?.salary_range?.min} lacs To ${data?.job?.salary_range?.max} lacs/${data?.job?.salary_range?.stype}`}</h4>
+                                <h4>Package : {`${data?.job?.salary_range?.min} lacs To ${data?.job?.salary_range?.max} lacs Yearly`}</h4>
                                 <hr />
                                 <h4>Phone No. : {data?.job?.company?.phone}</h4>
                                 <hr />

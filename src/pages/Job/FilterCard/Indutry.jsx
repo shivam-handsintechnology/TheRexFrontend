@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 const Indutry = ({ data, expanded, toggleExpand, handleChange }) => {
-    const jobFilters = useSelector((state) => state.job);
+    const jobFilters = useSelector((state) => state.filters);
     return (
         <>
             {data.slice(0, expanded.industry ? data.length : 3).map((industry, index) => (

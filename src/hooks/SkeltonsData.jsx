@@ -201,18 +201,22 @@ const CategoriesListSkelton = () => {
 }
 const Loading = () => {
     return (
-        <div className='spinloader'>
-
-            <Hourglass
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="hourglass-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                colors={['#306cce', '#72a1ed']}
-            />
+        <div>
+            <div className="full-screen-loader">
+                <div className="spinner"></div>
+            </div>
         </div>
+        // <div className='spinloader'>
+        //     <Hourglass
+        //         visible={true}
+        //         height="80"
+        //         width="80"
+        //         ariaLabel="hourglass-loading"
+        //         wrapperStyle={{}}
+        //         wrapperClass=""
+        //         colors={['#306cce', '#72a1ed']}
+        //     />
+        // </div>
     )
 }
 

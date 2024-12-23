@@ -1,4 +1,5 @@
 import { jobPortalApi, useGetIndustryFiltersQuery, useGetLocationFiltersQuery } from '@/redux/apiSlice';
+import { setFiltersData } from '@/redux/FilterSlice';
 import { paths } from '@/services/path';
 import React, { useState, useEffect } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
@@ -80,15 +81,19 @@ const Jobbanner = () => {
 
     // On Search Submit
     const handleSubmit = (e) => {
-        e.preventDefault()
-        if (search.location) {
-            dispatch(setFIlter({ type: "location", value: [search.location] }));
+        try {
+            e.preventDefault()
+            if (search.location) {
+                dispatch(setFiltersData({ type: "location", value: [search.location] }));
+            }
+            if (search.category) {
+                dispatch(setFiltersData({ type: "category", value: [search.category] }));
+            }
+            dispatch(setFiltersData({ type: "searchedQuery", value: search.searchedQuery }));
+            navigate(paths.Jobservices)
+        } catch (error) {
+            console.log("error", error)
         }
-        if (search.category) {
-            dispatch(setFIlter({ type: "category", value: [search.category] }));
-        }
-        dispatch(setFIlter({ type: "searchedQuery", value: search.searchedQuery }));
-        navigate(paths.Jobservices)
     };
     return (
         <div>

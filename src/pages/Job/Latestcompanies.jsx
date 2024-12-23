@@ -30,10 +30,10 @@ const Latestcompanies = () => {
                                 <CompanyCard item={item} />
                             </Col>
                         ))}
-                        <button className='btn btn primary' onClick={() => navigate(`${paths.Jobservices}`)}>Load More</button>
-
-
                     </Row>
+                    <button className="view-all-companies" onClick={() => navigate(`${paths.Jobservices}`)}>View All Companies</button>
+
+
                 </Container>
             </section>
         </div>

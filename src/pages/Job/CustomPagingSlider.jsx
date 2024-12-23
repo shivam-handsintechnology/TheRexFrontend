@@ -8,7 +8,7 @@ import { useGetJobByCompanyIdQuery } from "@/redux/apiSlice";
 import { useParams } from "react-router-dom";
 import { Loading } from "@/hooks/SkeltonsData";
 import { useDispatch } from "react-redux";
-import { setFIlter } from "@/redux/jobSlice";
+import { setFIlter } from "@/redux/FilterSlice";
 
 const CarouselWithPagination = ({ currentPage, setCurrentPage, JobsByCompanyData: data, isFetching }) => {
   const dispatch = useDispatch()

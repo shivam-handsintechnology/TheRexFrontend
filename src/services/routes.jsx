@@ -7,11 +7,7 @@ import Forgotpassword from "@/pages/Login/Forgotpassword";
 import ResetPassword from "@/pages/Login/ResetPassword";
 import OtpLogin from "@/pages/Login/OtpLogin";
 import Disclaimer from "@/components/pages/linkspages/disclaimer";
-import Profile from "@/pages/Profile/Profile";
-import Jobportal from "@/pages/Job/Jobportal";
-import Jobregister from "@/pages/Job/Register";
-import Jobservices from "@/pages/Job/Jobservices";
-import Jobdetails from "@/pages/Job/Jobdetails";
+import { jobRoutes } from "./Jobroutes";
 
 export const routes = [
   {
@@ -56,28 +52,7 @@ export const routes = [
     exact: true,
     element: <Disclaimer />,
   },
-  {
-    name: "Jobportal",
-    path: paths.Jobportal,
-    exact: true,
-    element: <Jobportal />,
-  },
-  {
-    name: "Jobregister",
-    path: paths.Jobregister,
-    exact: true,
-    element: <Jobregister />,
-  },
-  {
-    name: "Jobservices",
-    path: paths.Jobservices,
-    exact: true,
-    element: <Jobservices />,
-  },
-  {
-    name: "Jobdetails",
-    path: `${paths.Jobdetails}/:id`,
-    exact: true,
-    element: <Jobdetails />,
-  },
+
+  ...jobRoutes
+
 ];

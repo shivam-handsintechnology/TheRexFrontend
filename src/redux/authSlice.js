@@ -25,30 +25,13 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchJobUserData.fulfilled, (state, action) => {
-            console.log("action????", action.payload)
-            Object.assign(state, action.payload);
+            Object.assign({ ...state, ...action.payload });
         })
     },
 });
 
 export const { setToken, reset } = authSlice.actions;
-export const fetchJobUserDataAfterSetUserMiddleware = (store) => (next) => (action) => {
-    if (action) {
-        const result = next(action);
 
-        // Ensure action type and payload validity
-        if (action.type === setToken.type && action.payload) {
-            // Dispatch fetchJobUserData safely
-            if (typeof store.dispatch === "function") {
-                store.dispatch(fetchJobUserData());
-            } else {
-                console.error("Dispatch is not a function. Check middleware integration.");
-            }
-        }
-
-        return result;
-    }
-};
 
 // Subscribe to the store and conditionally dispatch fetchJobUserData based on the token
 

@@ -14,11 +14,11 @@ const SalarySlider = ({ data, expanded, toggleExpand }) => {
                     onChange={(e) => {
                         dispatch(setFIlter({
                             type: 'minSalary',
-                            value: e.target.min
+                            value: e.target.checked ? e.target.min : ""
                         }))
                         dispatch(setFIlter({
                             type: 'maxSalary',
-                            value: e.target.max
+                            value: e.target.checked ? e.target.max : ""
                         }))
                     }}
                     checked={jobFilters?.maxSalary == salaryRange.max && jobFilters?.minSalary == salaryRange.min}

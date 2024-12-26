@@ -7,13 +7,9 @@ import loginimg from "@/assets/login/loginimg.svg"
 import imgage3 from "@/assets/login/back.png"
 import { Link, useNavigate } from 'react-router-dom';
 import API_URL from '@/services/config'
-import { useDispatch } from 'react-redux';
-import { setToken } from '@/redux/authSlice';
 
 const OtpLogin = () => {
     const Navigate = useNavigate();
-    const dispatch = useDispatch()
-
     const [mobileNumber, setMobileNumber] = useState('');
     const [otp, setOtp] = useState('');
     const [otpSent, setOtpSent] = useState(false);
@@ -41,7 +37,6 @@ const OtpLogin = () => {
                 if (data.status === 200) {
                     console.log(data);
                     swal({ text: data.message, icon: 'success' });
-                    dispatch(setToken(data.data.token));
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('user', JSON.stringify(data.data));
                     sessionStorage.removeItem('email');

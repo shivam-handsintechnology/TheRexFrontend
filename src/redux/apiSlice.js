@@ -7,7 +7,7 @@ export const jobPortalApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token || localStorage.getItem("token")
+      const token = localStorage.getItem("token") || getState().auth.token
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }

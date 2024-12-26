@@ -55,7 +55,7 @@ const InitialData = {
 */
     {
         "role": "",
-        "token": "",
+        "token": localStorage.getItem("token") || "",
     },
     "JobAplicationFomINtialData": {
         "firstName": "",

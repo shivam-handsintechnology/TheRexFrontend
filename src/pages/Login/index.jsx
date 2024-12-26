@@ -9,11 +9,10 @@ import imgage3 from "@/assets/login/back.png"
 import { Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import API_URL from '@/services/config';
-import { useDispatch } from 'react-redux';
-import { setToken } from '@/redux/authSlice';
+
 const Login = () => {
   const Navigate = useNavigate();
-  const dispatch = useDispatch()
+
   const [showPassword, setShowPassword] = useState(false);
 
 
@@ -49,7 +48,6 @@ const Login = () => {
           if (data.status === 200) {
             console.log(data);
             localStorage.setItem('token', data.data.token);
-            dispatch(setToken(data.data.token));
             localStorage.setItem('user', JSON.stringify(data.data.user));
             swal({ text: data.message, icon: 'success' });
             localStorage.setItem('email', data.data.user.email);

@@ -8,6 +8,7 @@ import ResetPassword from "@/pages/Login/ResetPassword";
 import OtpLogin from "@/pages/Login/OtpLogin";
 import Disclaimer from "@/components/pages/linkspages/disclaimer";
 import { jobRoutes } from "./Jobroutes";
+import Profile from "@/pages/Profile/Profile";
 
 export const routes = [
   {
@@ -51,6 +52,12 @@ export const routes = [
     path: paths.Disclaimer,
     exact: true,
     element: <Disclaimer />,
+  },
+  {
+    name: "Profile",
+    path: paths.Profile,
+    exact: true,
+    element: <Profile />,
   },
 
   ...jobRoutes

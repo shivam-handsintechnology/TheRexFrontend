@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchJobUserData = createAsyncThunk(
     'auth/fetchJobUserData',
     async (_, { getState, dispatch, rejectWithValue }) => {
-        const token = getState().auth.token  // Get token from state or localStorage
+        const token = localStorage.getItem("token") || getState().auth.token  // Get token from state or localStorage
         if (!token) {
             dispatch(reset()); // Reset state if no token
             return rejectWithValue('No token available');

@@ -6,7 +6,7 @@ export const paths = {
     ResetPassword: '/ResetPassword',
     OtpLogin: '/OtpLogin',
     Disclaimer: '/Disclaimer',
-    // Profile: '/Profile',
+    Profile: '/Profile',
     Jobportal: '/JobSection',
     Jobregister: '/Jobregister',
     Jobservices: '/Jobservices',

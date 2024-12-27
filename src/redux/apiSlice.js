@@ -65,6 +65,15 @@ export const jobPortalApi = createApi({
       }),
       invalidatesTags: ['UserProfile']
     }),
+    UpdateJobseeker: builder.mutation({
+      query: (formData) => ({
+        url: '/api/jobportal/user/jobseeker',
+        method: 'PUT',
+        body: formData,
+        credentials: 'include',
+      }),
+      invalidatesTags: ['UserProfile']
+    }),
     uploadProfile: builder.mutation({
       query: (formData) => ({
         url: '/api/jobportal/user/upload/profilephoto',
@@ -271,7 +280,7 @@ export const {
   useGetAllJobsQuery, useGetCountryListQuery, useGetJobByIdQuery, useGetOptionsQuery,
   useGetStatesByCountryQuery, useGetCitiesByStateQuery, useGetAllJobsByCategoryQuery, useGetAppliedJobsQuery, useGetindustryQuery, useGetAllJobTitleQuery,
   useGetCompanyByIdQuery, useGetAdminJobByIdQuery, useGetJobCategoriesQuery, useApplicatSTatuschangeMutation,
-  useGetAllJobPortalUsersQuery, useGetJobPortalProfileQuery, useGetApplicantsQuery, useGetRoleQuery, useRegisterRecruiterMutation, useRegisterJobseekerMutation,
+  useGetAllJobPortalUsersQuery, useGetJobPortalProfileQuery, useGetApplicantsQuery, useGetRoleQuery, useRegisterRecruiterMutation, useRegisterJobseekerMutation, useUpdateJobseekerMutation,
   useGetSubscriptionQuery, useGetLocationFiltersQuery, useGetIndustryFiltersQuery, useLoginMutation,
   useGetSalaryFiltersQuery, usePostJobMutation, useUpdateJobMutation, useApplyJobMutation, useGetJobByCompanyIdQuery,
   useGetAllFiltersQuery, useGetFunctionalAreasQuery, useGetCareerLevelsQuery, useGetSubIndustryFiltersQuery, useGetAllCompaniesByLatestHiringQuery, useGetAllTopCompaniesQuery

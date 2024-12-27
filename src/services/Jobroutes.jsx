@@ -1,10 +1,8 @@
 import { paths } from "./path";
 import Jobportal from "@/pages/Job/Jobportal";
-import Jobregister from "@/pages/Job/Register";
+import PortalUserRegister from "@/pages/Job/PortalUserRegister";
 import Jobservices from "@/pages/Job/Jobservices";
 import Jobdetails from "@/pages/Job/Jobdetails";
-import Employer from "@/pages/Job/Register/Employer";
-import { Navigate } from "react-router-dom";
 export const jobRoutes = [
     {
         name: "Jobportal",
@@ -13,10 +11,10 @@ export const jobRoutes = [
         element: <Jobportal />,
     },
     {
-        name: "Jobregister",
+        name: "PortalUserRegister",
         path: `${paths.Jobregister}/:role?`, // Optional ":role" parameter
         exact: true,
-        element: <Jobregister />,
+        element: <PortalUserRegister />,
     },
 
     {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import useEmployerForm from '@/hooks/useEmployerForm';
-import EmployerForm from './EmployerForm';
-const Employer = () => {
+import useCandidateForm from '@/hooks/useCandidateForm';
+import JobSeekerForm from './JobSeekerForm';
+const JobSeeker = () => {
     const {
         register,
         control,
@@ -15,9 +15,10 @@ const Employer = () => {
         CityList,
         industryData,
         onSubmit,
-    } = useEmployerForm();
+    } = useCandidateForm();
+
     return (
-        <EmployerForm {...{
+        <JobSeekerForm {...{
             register,
             control,
             handleSubmit,
@@ -28,10 +29,9 @@ const Employer = () => {
             StatList,
             CityList,
             industryData,
-            onSubmit
-        }}
-        />
-    )
-}
+            onSubmit,
+        }} />
+    );
+};
 
-export default Employer;
+export default JobSeeker;

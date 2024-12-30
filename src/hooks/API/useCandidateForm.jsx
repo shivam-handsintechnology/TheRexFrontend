@@ -7,18 +7,18 @@ import {
     useGetCountryListQuery,
     useGetStatesByCountryQuery,
     useGetCitiesByStateQuery,
-    useUpdateJobseekerMutation,
+    useRegisterJobseekerMutation,
 } from "@/redux/apiSlice"; // Replace with your actual API hooks path
 import { updateForm } from "@/redux/candidateFormSlice";
 import { candidateValidationSchema } from "@/utils/validators";
-import { useGetFiltersData } from ".";
+import { useGetFiltersData } from "..";
 
-const useUpdateCandidateForm = () => {
+const useCandidateForm = () => {
     useGetFiltersData(["industryData"]);
     const dispatch = useDispatch();
     const candidateForm = useSelector((state) => state.candidateForm.Form);
     const { industryData } = useSelector((state) => state.filters) || [];
-    const [RegisterReqcruiter] = useUpdateJobseekerMutation();
+    const [RegisterReqcruiter] = useRegisterJobseekerMutation();
 
     const {
         register,
@@ -81,4 +81,4 @@ const useUpdateCandidateForm = () => {
     };
 };
 
-export default useUpdateCandidateForm;
+export default useCandidateForm;

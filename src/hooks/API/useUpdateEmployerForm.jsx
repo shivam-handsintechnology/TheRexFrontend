@@ -8,16 +8,20 @@ import {
     useGetStatesByCountryQuery,
     useGetCitiesByStateQuery,
     useRegisterRecruiterMutation,
+    useUpdateCompanyMutation,
+    useGetAllCompaniesQuery,
 } from "@/redux/apiSlice"; // Replace with your actual API hooks path
 import { updateForm } from "@/redux/EmployerFormSlice";
 import { EmployerSchema } from "@/utils/validators";
-import { useGetFiltersData } from ".";
+import { useGetFiltersData } from "..";
 
-const useEmployerForm = () => {
+const useUpdateEmployerForm = () => {
     useGetFiltersData(["industryData"]);
+    const { data } = useGetAllCompaniesQuery()
+    console.log("data", data)
     const EmployerForm = useSelector((state) => state.EmployerForm.Form);
     const { industryData } = useSelector((state) => state.filters) || [];
-    const [RegisterReqcruiter,] = useRegisterRecruiterMutation();
+    const [UpdateCompany,] = useUpdateCompanyMutation();
 
     const {
         register,
@@ -61,7 +65,7 @@ const useEmployerForm = () => {
                 }
 
             }
-            const response = await RegisterReqcruiter(formdata).unwrap();
+            const response = await UpdateCompany(formdata).unwrap();
             console.log({ response });
             swal({ text: response?.message || "Registered Successfully", icon: "success" });
         } catch (error) {
@@ -85,4 +89,4 @@ const useEmployerForm = () => {
     };
 };
 
-export default useEmployerForm;
+export default useUpdateEmployerForm;

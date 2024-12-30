@@ -1,6 +1,12 @@
 import API_URL from '@/services/config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const getUserid = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user"))?._id
+  } catch (error) {
+    return ""
+  }
+}
 // RTK Query API definition
 export const jobPortalApi = createApi({
   reducerPath: 'jobPortalApi',
@@ -34,6 +40,10 @@ export const jobPortalApi = createApi({
     }),
     getRole: builder.query({
       query: () => '/api/jobportal/user/getrole',
+      providesTags: ['UserProfile'],
+    }),
+    getUserMenu: builder.query({
+      query: () => `/api/jobportal/user/menu?id=${getUserid() || ""}`,
       providesTags: ['UserProfile'],
     }),
     getindustry: builder.query({
@@ -277,7 +287,7 @@ export const jobPortalApi = createApi({
 export const {
   useGetAllAdminJobsQuery, useUpdateCompanyMutation, useUpdateProfileMutation,
   useGetAllCompaniesQuery, useCreateCompanyMutation, useGetAllApllidJobsQuery, useGetApplicantTrackingQuery,
-  useGetAllJobsQuery, useGetCountryListQuery, useGetJobByIdQuery, useGetOptionsQuery,
+  useGetAllJobsQuery, useGetCountryListQuery, useGetJobByIdQuery, useGetOptionsQuery, useGetUserMenuQuery,
   useGetStatesByCountryQuery, useGetCitiesByStateQuery, useGetAllJobsByCategoryQuery, useGetAppliedJobsQuery, useGetindustryQuery, useGetAllJobTitleQuery,
   useGetCompanyByIdQuery, useGetAdminJobByIdQuery, useGetJobCategoriesQuery, useApplicatSTatuschangeMutation,
   useGetAllJobPortalUsersQuery, useGetJobPortalProfileQuery, useGetApplicantsQuery, useGetRoleQuery, useRegisterRecruiterMutation, useRegisterJobseekerMutation, useUpdateJobseekerMutation,

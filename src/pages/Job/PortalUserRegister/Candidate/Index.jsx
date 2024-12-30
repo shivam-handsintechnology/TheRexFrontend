@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import useCandidateForm from '@/hooks/useCandidateForm';
+import useCandidateForm from '@/hooks/API/useCandidateForm';
 import JobSeekerForm from './JobSeekerForm';
 const JobSeeker = () => {
     const {

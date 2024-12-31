@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import JobListing from './JobListing'
 import { Button, Container } from 'react-bootstrap'
-import { useGetAllAdminJobsQuery } from '@/redux/apiSlice'
+import { useGetAllAdminJobsQuery, useGetApplicantsQuery } from '@/redux/apiSlice'
 import { paths } from '@/services/path'
 import usePaginationhook from '@/hooks/usePaginationhook'
 import Loader from '@/components/common/Loader'
 
 const Index = () => {
+    const { jobid } = useParams()
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setitemsPerPage] = useState(5)
-    const { data, isFetching } = useGetAllAdminJobsQuery({ page: currentPage, limit: itemsPerPage });
+    const { data, isFetching } = useGetApplicantsQuery({ id: jobid, page: currentPage, limit: itemsPerPage });
 
     console.log("data", data)
     // Handle page change
@@ -29,7 +30,7 @@ const Index = () => {
     if (isFetching) return <Loader />
     return (
         <div className='container'>
-            <JobListing jobs={data?.jobs || []} />
+            <JobListing jobs={data?.applicants || []} />
             <div className='text-center'>
                 {pagination}
             </div>

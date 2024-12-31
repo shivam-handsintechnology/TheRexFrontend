@@ -24,6 +24,14 @@ export function debounce(func, delay) {
         }, delay);
     };
 }
+export const handleDownload = (url, name) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = name; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
 let date = new Date().getFullYear()
 export const yearsArray = Array.from({ length: date - 1801 + 1 }, (_, i) => 1801 + i).reverse()
 export const addDays = (date, days) => {

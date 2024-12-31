@@ -105,7 +105,7 @@ export const jobPortalApi = createApi({
     }),
     // jobs
     getAllAdminJobs: builder.query({
-      query: ({ currentPage = 1, itemsPerPage = 10, keyword = "" }) => `/api/jobportal/job/getadminjobs?page=${currentPage}&perPage=${itemsPerPage}&keyword=${keyword}`,
+      query: ({ page = 1, limit = 10, keyword = "" }) => `/api/jobportal/job/getadminjobs?page=${page}&limit=${limit}&keyword=${keyword}`,
       providesTags: ["getAdminJob"]
     }),
     getAllJobs: builder.query({
@@ -136,7 +136,7 @@ export const jobPortalApi = createApi({
     }),
 
     getApplicants: builder.query({
-      query: ({ id = "", currentPage = 1, perPage = 5 }) => `/api/jobportal/application/${id}/applicants?page=${currentPage}&perPage=${perPage}`,
+      query: ({ id = "", page = 1, limit = 5 }) => `/api/jobportal/application/${id}/applicants?page=${page}&limit=${limit}`,
     }),
     getApplicantTracking: builder.query({
       query: ({ currentPage = 1, perPage = 5, status = "" }) => `/api/jobportal//application/tracking?page=${currentPage}&limit=${perPage}&status=${status}`,

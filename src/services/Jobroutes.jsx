@@ -9,10 +9,15 @@ import ViewJobs from "@/pages/Job/Employers/Jobs/View"
 import AddJob from "@/pages/Job/Employers/Jobs/Add"
 import EditJob from "@/pages/Job/Employers/Jobs/Edit"
 import { paths } from "./path";
-
+import ShortlistCandidates from "@/pages/Job/Employers/Applications/ShortlistCandidates"
+import TrackingApplications from "@/pages/Job/Employers/Applications/TrackingApplications"
+import AppliedJobs from "@/pages/Job/Candidates/Applications/AppliedJobs";
+import ApplicantsByJobId from "@/pages/Job/Employers/Applications/ApplicantsByJobId";
+import Candidates from "@/pages/Job/Employers/Candidates";
 export const jobRoutes = [
     {
         name: "Jobportal",
+
         path: paths.Jobportal,
         exact: true,
         element: <Jobportal />,
@@ -20,6 +25,13 @@ export const jobRoutes = [
     {
         name: "PortalUserRegister",
         path: `${paths.Jobregister}/:role?`, // Optional ":role" parameter
+        exact: true,
+        element: <PortalUserRegister />,
+    },
+    {
+        name: "PortalUserUpdate",
+        Layout: "JobPortalDashboard",
+        path: `${paths.JobUserUpdate}/:id/:role?`, // Optional ":role" parameter
         exact: true,
         element: <PortalUserRegister />,
     },
@@ -39,19 +51,22 @@ export const jobRoutes = [
     // companies
     {
         name: "Companies",
+        Layout: "JobPortalDashboard",
         path: paths.employerCompanies,
         exact: true,
         element: <ViewCompanies />,
     },
     {
         name: "CreateCompany",
+        Layout: "JobPortalDashboard",
         path: paths.employerCompanyCreate,
         exact: true,
         element: <AddCompany />,
     },
     {
         name: "Edit Company",
-        path: paths.employerCompanyEdit,
+        Layout: "JobPortalDashboard",
+        path: `${paths.employerCompanyEdit}/:id`,
         exact: true,
         element: <EditCompany />,
     },
@@ -59,41 +74,62 @@ export const jobRoutes = [
     {
         name: "Jobs",
         path: paths.employerJobs,
+        Layout: "JobPortalDashboard",
         exact: true,
         element: <ViewJobs />,
     },
     {
         name: "CreateJob",
-        path: `${paths.PostJob}:id`,
+        Layout: "JobPortalDashboard",
+        path: `${paths.PostJob}`,
         exact: true,
         element: <AddJob />,
     },
     {
         name: "UpdateJob",
-        path: `${paths.UpdateJob}:id`,
+        Layout: "JobPortalDashboard",
+        path: `${paths.UpdateJob}/:id`,
         exact: true,
         element: <EditJob />,
     },
     // Applications
     {
         name: "ShortlistCandidates",
+        Layout: "JobPortalDashboard",
         path: paths.ShortlistCandidates,
         exact: true,
         element: <ShortlistCandidates />,
     },
     {
-        name: "Applications",
-        path: paths.AllApplications,
+        name: "Tracking Applications",
+        Layout: "JobPortalDashboard",
+        path: paths.TrackingApplications,
         exact: true,
-        element: <Applications />,
+        element: <TrackingApplications />,
     },
     {
-        name: "ApplicantsByJob",
-        path: paths.ApplicantsByJobId,
+        name: "Candidates",
+        Layout: "JobPortalDashboard",
+        path: paths.Candidates,
         exact: true,
-        element: <ApplicantsByJob />,
+        element: <Candidates />,
+    },
+    {
+        name: "Applicantions",
+        Layout: "JobPortalDashboard",
+        path: `${paths.ApplicantsByJobId}/:jobid`,
+        exact: true,
+        element: <ApplicantsByJobId />,
     },
     /* End Employer */
     /* Candidate */
+    // Applications
+    {
+        name: "Applied Jobs",
+        path: `${paths.AppliedJobs}`,
+        Layout: "JobPortalDashboard",
+        exact: true,
+        element: <AppliedJobs />,
+    },
 
 ];

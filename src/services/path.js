@@ -10,22 +10,24 @@ export const paths = {
     // Job Portal 
     Jobportal: '/JobSection',
     Jobregister: '/Jobregister',
+    JobUserUpdate: '/JobUserUpdate',
     Jobservices: '/Jobservices',
     Jobdetails: '/Jobdetails',
     /* Employer */
     // Companies
     employerCompanies: "/job/admin/companies",
     employerCompanyCreate: "/job/admin/companies/create",
-    employerCompanyEdit: "/job/admin/companies/:id",
+    employerCompanyEdit: "/job/admin/companies",
     // Jobs
     employerJobs: "/job/admin/jobs",
-    employerSingleJob: "/job/admin/job/:id",
+    employerSingleJob: "/job/admin/job",
     PostJob: "/job/admin/jobs/create",
-    UpdateJob: "/job/admin/jobs/update/:id",
+    UpdateJob: "/job/admin/jobs/update",
     // Applications
     ShortlistCandidates: "/job/admin/applicants/shortlists",
-    AllApplications: "/job/admin/applicants",
-    ApplicantsByJobId: "/admin/jobs/applicants/:jobid",
+    TrackingApplications: "/job/admin/Trackingapplicantions",
+    ApplicantsByJobId: "/admin/jobs/applicants",
+    Candidates: "/admin/jobs/Candidates",
     /* End Employer */
     /* Candidate */
     // Application  

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import usePaginationhook from '@/hooks/usePaginationhook';
 import { useGetAllApllidJobsQuery } from '@/redux/apiSlice';
 
-const AppliedJobs = () => {
+const Index = () => {
     const navigate = useNavigate()
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setitemsPerPage] = useState(5)
@@ -67,4 +67,4 @@ const AppliedJobs = () => {
     );
 }
 
-export default AppliedJobs;
+export default Index;

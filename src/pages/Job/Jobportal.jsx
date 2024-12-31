@@ -5,10 +5,9 @@ import Jobcounter from './Jobcounter';
 import Latestcompanies from './Latestcompanies';
 import Jobsteps from './Jobsteps';
 import Jobcloud from './Jobcloud';
-import { useGetUserMenuQuery } from '@/redux/apiSlice';
 
 const Jobportal = () => {
-  const { data } = useGetUserMenuQuery()
+
   return (
     <div>
       <Jobbanner />

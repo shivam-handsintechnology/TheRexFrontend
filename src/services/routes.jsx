@@ -9,7 +9,8 @@ import OtpLogin from "@/pages/Login/OtpLogin";
 import Disclaimer from "@/components/pages/linkspages/disclaimer";
 import { jobRoutes } from "./Jobroutes";
 import Profile from "@/pages/Profile/Profile";
-
+import JobPortalDashboard from "@/components/common/layouts/JobPortalDashboard";
+console.log(jobRoutes)
 export const routes = [
   {
     name: "HomePage",
@@ -59,7 +60,11 @@ export const routes = [
     exact: true,
     element: <Profile />,
   },
-
-  ...jobRoutes
+  ...jobRoutes.map((route) => ({
+    ...route,  // First spread the route properties
+    element: route.Layout && route.Layout === "JobPortalDashboard"  // Then override the element
+      ? <JobPortalDashboard>{route.element}</JobPortalDashboard>
+      : route.element,
+  }))
 
 ];
